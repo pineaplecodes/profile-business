@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bisabikinweb — Jasa Pembuatan Website Profesional</title>
+
+  <!-- Google Fonts: JetBrains Mono (monospace, techy) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['JetBrains Mono', 'Courier New', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            neon: {
+              cyan:   '#00f0ff',
+              blue:   '#3b7bff',
+              purple: '#a855f7',
+              green:  '#00ff9f',
+            }
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.6s ease forwards',
+            'blink':      'blink 1s step-end infinite',
+            'glow-pulse': 'glowPulse 2.5s ease-in-out infinite',
+            'float':      'float 4s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%':   { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            blink: {
+              '0%, 100%': { opacity: '1' },
+              '50%':      { opacity: '0' },
+            },
+            glowPulse: {
+              '0%, 100%': { boxShadow: '0 0 8px #00f0ff55, 0 0 24px #00f0ff22' },
+              '50%':      { boxShadow: '0 0 18px #00f0ffaa, 0 0 48px #00f0ff44' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%':      { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Global ── */
+    * { scroll-behavior: smooth; }
+    body { font-family: 'JetBrains Mono', monospace; background: #fafafa; color: #1a1a2e; }
+
+    /* ── Neon text glow ── */
+    .neon-text {
+      color: #00f0ff;
+      text-shadow: 0 0 8px #00f0ff99, 0 0 24px #00f0ff44;
+    }
+    .neon-text-purple {
+      color: #a855f7;
+      text-shadow: 0 0 8px #a855f799, 0 0 24px #a855f744;
+    }
+    .neon-text-blue {
+      color: #3b7bff;
+      text-shadow: 0 0 8px #3b7bff99, 0 0 24px #3b7bff44;
+    }
+
+    /* ── Neon button ── */
+    .btn-neon {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: transparent;
+      color: #00f0ff;
+      border: 1.5px solid #00f0ff;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00f0ff33, inset 0 0 10px #00f0ff11;
+      animation: glowPulse 2.5s ease-in-out infinite;
+      text-decoration: none;
+    }
+    .btn-neon:hover {
+      background: #00f0ff15;
+      box-shadow: 0 0 24px #00f0ff88, inset 0 0 18px #00f0ff22;
+      transform: translateY(-2px);
+    }
+
+    /* ── Neon button (filled) ── */
+    .btn-neon-fill {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      background: linear-gradient(135deg, #00f0ff22, #3b7bff22);
+      color: #00f0ff;
+      border: 1.5px solid #00f0ff;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px #00f0ff44;
+      text-decoration: none;
+    }
+    .btn-neon-fill:hover {
+      background: linear-gradient(135deg, #00f0ff33, #3b7bff33);
+      box-shadow: 0 0 36px #00f0ffaa;
+      transform: translateY(-2px);
+    }
+
+    /* ── Neon WA button ── */
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, #00f0ff18, #a855f718);
+      color: #00f0ff;
+      border: 1.5px solid #00f0ff;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 28px #00f0ff55;
+      text-decoration: none;
+    }
+    .btn-wa:hover {
+      background: linear-gradient(135deg, #00f0ff28, #a855f728);
+      box-shadow: 0 0 48px #00f0ffaa;
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    /* ── Card base ── */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00f0ff, #3b7bff, #a855f7);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .card:hover {
+      border-color: #00f0ff55;
+      box-shadow: 0 8px 32px #00f0ff18, 0 2px 8px rgba(0,0,0,0.08);
+      transform: translateY(-4px);
+    }
+    .card:hover::before { opacity: 1; }
+
+    /* ── Section fade in ── */
+    .section-fade {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .section-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Pixel decoration ── */
+    .pixel-dot {
+      width: 6px; height: 6px;
+      background: #00f0ff;
+      display: inline-block;
+      box-shadow: 0 0 6px #00f0ff;
+    }
+
+    /* ── Terminal prefix ── */
+    .term-prefix { color: #a855f7; }
+    .term-cursor { display: inline-block; animation: blink 1s step-end infinite; }
+
+    /* ── Nav sticky glass ── */
+    nav {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(250, 250, 250, 0.85);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    /* ── Hero grid bg ── */
+    .hero-grid {
+      background-image:
+        linear-gradient(#00f0ff08 1px, transparent 1px),
+        linear-gradient(90deg, #00f0ff08 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* ── Testimonial card ── */
+    .testi-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .testi-card:hover {
+      border-color: #a855f755;
+      box-shadow: 0 4px 24px #a855f718;
+    }
+    .testi-card::after {
+      content: '"';
+      position: absolute;
+      top: -12px; right: 16px;
+      font-size: 5rem;
+      color: #00f0ff18;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    /* ── Portfolio thumbnail ── */
+    .portfolio-thumb {
+      width: 100%; height: 180px;
+      background: #f0f9ff;
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid #e5e7eb;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #fafafa; }
+    ::-webkit-scrollbar-thumb { background: #00f0ff55; border-radius: 3px; }
+
+    /* ── Tag label ── */
+    .tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border: 1px solid #00f0ff55;
+      border-radius: 2px;
+      font-size: 0.7rem;
+      color: #00f0ff;
+      background: #00f0ff0a;
+    }
+
+    /* ── Divider ── */
+    .neon-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #00f0ff44, #a855f744, transparent);
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+<!-- ════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#hero" class="font-mono font-bold text-lg tracking-tight flex items-center gap-2">
+      <span class="pixel-dot"></span>
+      <span class="text-gray-900">bisabikn</span><span class="neon-text">web</span>
+      <span class="term-cursor text-neon-cyan" style="color:#00f0ff;">_</span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hidden md:flex items-center gap-8 text-sm text-gray-500 font-mono">
+      <li><a href="#about"     class="hover:text-gray-900 transition-colors">tentang</a></li>
+      <li><a href="#services"  class="hover:text-gray-900 transition-colors">layanan</a></li>
+      <li><a href="#portfolio" class="hover:text-gray-900 transition-colors">portofolio</a></li>
+      <li><a href="#contact"   class="btn-neon text-xs py-2 px-4">// hubungi kami</a></li>
+    </ul>
+
+    <!-- Mobile hamburger -->
+    <button id="nav-toggle" class="md:hidden p-2 text-gray-600 hover:text-gray-900" aria-label="Toggle menu">
+      <svg id="icon-open"  class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white/95">
+    <ul class="flex flex-col px-6 py-4 gap-4 text-sm font-mono text-gray-600">
+      <li><a href="#about"     class="block hover:text-gray-900" onclick="closeMobileMenu()">tentang</a></li>
+      <li><a href="#services"  class="block hover:text-gray-900" onclick="closeMobileMenu()">layanan</a></li>
+      <li><a href="#portfolio" class="block hover:text-gray-900" onclick="closeMobileMenu()">portofolio</a></li>
+      <li><a href="#contact"   class="block neon-text font-semibold" onclick="closeMobileMenu()">// hubungi kami</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════════════ -->
+<section id="hero" class="hero-grid min-h-screen flex items-center pt-20 pb-16">
+  <div class="max-w-6xl mx-auto px-6 w-full">
+
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: text -->
+      <div>
+        <!-- Terminal prefix -->
+        <p class="text-sm font-mono text-gray-400 mb-4">
+          <span class="term-prefix">$ </span>
+          <span class="text-gray-500">hello_world --welcome-to</span>
+        </p>
+
+        <!-- Main headline -->
+        <h1 class="font-mono font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 text-gray-900">
+          Bikin Website<br>
+          <span class="neon-text">Profesional</span><br>
+          Tanpa Ribet<span class="term-cursor neon-text text-5xl">.</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="font-sans text-gray-500 text-base md:text-lg leading-relaxed mb-8 max-w-md">
+          Kami bantu UMKM, personal brand, dan bisnis kecil-menengah punya website keren
+          yang <span class="neon-text-purple font-mono text-sm">fast</span>,
+          <span class="neon-text-blue font-mono text-sm">clean</span>, dan
+          <span class="neon-text font-mono text-sm">convert</span>.
+        </p>
+
+        <!-- Typing effect area -->
+        <p class="font-mono text-xs text-gray-400 mb-6 h-5">
+          <span class="term-prefix">&gt; </span>
+          <span id="typing-text"></span><span class="term-cursor text-gray-400">|</span>
+        </p>
+
+        <!-- CTA buttons -->
+        <div class="flex flex-wrap gap-4">
+          <a href="#contact" class="btn-neon-fill">Konsultasi Gratis &rarr;</a>
+          <a href="#portfolio" class="font-mono text-sm text-gray-500 border border-gray-200 px-6 py-3 rounded hover:border-gray-400 hover:text-gray-800 transition-all">Lihat Karya</a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="mt-10 flex items-center gap-6 text-xs font-mono text-gray-400">
+          <span class="flex items-center gap-1"><span class="neon-text text-base">&#10003;</span> 30+ Project</span>
+          <span class="flex items-center gap-1"><span class="neon-text text-base">&#10003;</span> Harga Transparan</span>
+          <span class="flex items-center gap-1"><span class="neon-text text-base">&#10003;</span> Support 24/7</span>
+        </div>
+      </div>
+
+      <!-- Right: floating code card -->
+      <div class="hidden md:flex justify-center items-center">
+        <div class="relative">
+
+          <div class="bg-gray-900 rounded-lg p-6 shadow-2xl shadow-cyan-500/10 border border-gray-700 w-80" style="animation: float 4s ease-in-out infinite;">
+            <!-- Window chrome -->
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-3 h-3 rounded-full bg-red-400"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+              <span class="w-3 h-3 rounded-full bg-green-400"></span>
+              <span class="ml-2 text-xs text-gray-500 font-mono">bisabikinweb.dev</span>
+            </div>
+            <!-- Fake code -->
+            <div class="font-mono text-xs space-y-1.5">
+              <p><span class="text-purple-400">const</span> <span class="text-blue-300">website</span> <span class="text-gray-400">=</span> <span class="text-gray-500">{</span></p>
+              <p class="ml-4"><span class="text-green-300">status</span><span class="text-gray-400">:</span> <span class="text-yellow-300">"profesional"</span><span class="text-gray-400">,</span></p>
+              <p class="ml-4"><span class="text-green-300">speed</span><span class="text-gray-400">:</span> <span class="text-yellow-300">"&#9889; cepat"</span><span class="text-gray-400">,</span></p>
+              <p class="ml-4"><span class="text-green-300">harga</span><span class="text-gray-400">:</span> <span class="text-yellow-300">"terjangkau"</span><span class="text-gray-400">,</span></p>
+              <p class="ml-4"><span class="text-green-300">revisi</span><span class="text-gray-400">:</span> <span class="text-cyan-300">Infinity</span><span class="text-gray-400">,</span></p>
+              <p><span class="text-gray-500">}</span></p>
+              <p class="mt-3"><span class="text-purple-400">// ready to ship!</span></p>
+              <p class="flex items-center gap-1">
+                <span class="text-green-400">&#9654;</span>
+                <span class="text-cyan-300">deploy</span><span class="text-gray-400">(</span><span class="text-blue-300">website</span><span class="text-gray-400">)</span>
+                <span class="term-cursor text-white text-sm">_</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Pixel dots decoration -->
+          <div class="absolute -top-8 -right-8 opacity-30" style="display:grid;grid-template-columns:repeat(5,8px);gap:4px;">
+            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;"></div>
+            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;"></div>
+            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;"></div>
+            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;"></div>
+            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;"></div>
+            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;"></div>
+            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;"></div>
+            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+          </div>
+
+          <!-- Neon glow behind card -->
+          <div class="absolute inset-0 -z-10 blur-3xl opacity-20 rounded-full scale-75" style="background:linear-gradient(135deg,#00f0ff,#a855f7);"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+
+<!-- ════════════════════════════════════════════
+     ABOUT SECTION
+════════════════════════════════════════════ -->
+<section id="about" class="py-24 bg-white section-fade">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: pixel monitor SVG -->
+      <div class="flex justify-center">
+        <div class="relative w-64 h-64">
+          <svg viewBox="0 0 200 200" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="30" width="160" height="110" rx="4" fill="#1a1a2e" stroke="#00f0ff" stroke-width="1.5"/>
+            <rect x="28" y="38" width="144" height="94" fill="#0d1117"/>
+            <rect x="36" y="50" width="80" height="4" rx="1" fill="#00f0ff" opacity="0.8"/>
+            <rect x="36" y="62" width="60" height="3" rx="1" fill="#a855f7" opacity="0.6"/>
+            <rect x="36" y="73" width="100" height="3" rx="1" fill="#3b7bff" opacity="0.5"/>
+            <rect x="36" y="84" width="50" height="3" rx="1" fill="#00f0ff" opacity="0.4"/>
+            <rect x="36" y="95" width="90" height="3" rx="1" fill="#a855f7" opacity="0.3"/>
+            <rect x="36" y="106" width="70" height="3" rx="1" fill="#3b7bff" opacity="0.3"/>
+            <rect x="36" y="118" width="6" height="8" rx="1" fill="#00f0ff" opacity="0.9">
+              <animate attributeName="opacity" values="0.9;0;0.9" dur="1s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="90" y="140" width="20" height="16" rx="1" fill="#1a1a2e" stroke="#374151" stroke-width="1"/>
+            <rect x="70" y="154" width="60" height="6" rx="2" fill="#1a1a2e" stroke="#374151" stroke-width="1"/>
+            <circle cx="160" cy="38" r="3" fill="#00f0ff" opacity="0.6">
+              <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+          <div class="absolute inset-0 -z-10 blur-2xl opacity-10 rounded-full" style="background:#00f0ff;"></div>
+        </div>
+      </div>
+
+      <!-- Right: text content -->
+      <div>
+        <span class="tag mb-4 inline-block">// tentang kami</span>
+        <h2 class="font-mono font-bold text-3xl md:text-4xl text-gray-900 mb-6">
+          Kami bukan<br><span class="neon-text-purple">agensi besar</span>,<br>tapi kami <span class="neon-text">niat banget.</span>
+        </h2>
+        <div class="font-sans text-gray-500 space-y-4 leading-relaxed">
+          <p>
+            <strong class="text-gray-700">Bisabikinweb</strong> adalah tim developer indie yang fokus bantu
+            UMKM, personal brand, dan bisnis kecil-menengah buat website yang beneran keren — bukan asal jadi.
+          </p>
+          <p>
+            Kami percaya website yang bagus itu <span class="font-mono text-sm neon-text-blue">simpel</span>,
+            <span class="font-mono text-sm neon-text">cepat</span>, dan
+            <span class="font-mono text-sm neon-text-purple">ngomong sendiri</span> ke calon pelanggan.
+            Ga perlu warna ngejreng atau animasi berlebihan.
+          </p>
+          <p>
+            Dari konsultasi sampai website live, kami temani prosesnya. Santai tapi serius. Friendly tapi profesional.
+          </p>
+        </div>
+
+        <!-- Stats row -->
+        <div class="mt-8 grid grid-cols-3 gap-6">
+          <div>
+            <p class="font-mono font-bold text-2xl neon-text">30+</p>
+            <p class="text-xs text-gray-400 font-sans mt-1">Project selesai</p>
+          </div>
+          <div>
+            <p class="font-mono font-bold text-2xl neon-text-purple">2yr</p>
+            <p class="text-xs text-gray-400 font-sans mt-1">Pengalaman</p>
+          </div>
+          <div>
+            <p class="font-mono font-bold text-2xl neon-text-blue">100%</p>
+            <p class="text-xs text-gray-400 font-sans mt-1">Klien puas</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+
+<!-- ════════════════════════════════════════════
+     SERVICES SECTION
+════════════════════════════════════════════ -->
+<section id="services" class="py-24 bg-gray-50 section-fade">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="text-center mb-16">
+      <span class="tag mb-4 inline-block">// layanan kami</span>
+      <h2 class="font-mono font-bold text-3xl md:text-4xl text-gray-900">
+        Apa yang bisa<br>kami <span class="neon-text">buatkan</span> buat kamu?
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Service 1 -->
+      <div class="card p-6">
+        <div class="mb-4">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect x="8" y="12" width="24" height="22" fill="#e0f7ff" stroke="#00f0ff" stroke-width="1.5"/>
+            <rect x="14" y="18" width="5" height="5" fill="#00f0ff" opacity="0.5"/>
+            <rect x="21" y="18" width="5" height="5" fill="#00f0ff" opacity="0.5"/>
+            <rect x="14" y="26" width="5" height="8" fill="#00f0ff" opacity="0.3"/>
+            <rect x="21" y="26" width="5" height="8" fill="#00f0ff" opacity="0.3"/>
+            <rect x="4" y="34" width="32" height="2" fill="#00f0ff" opacity="0.8"/>
+            <rect x="17" y="6" width="6" height="6" fill="#00f0ff" opacity="0.6"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-bold text-base text-gray-900 mb-2">Company Profile</h3>
+        <p class="font-sans text-sm text-gray-500 leading-relaxed">Website resmi bisnis yang bikin kamu keliatan kredibel di mata calon klien dan mitra.</p>
+        <p class="font-mono text-xs neon-text mt-4">mulai 500rb &rarr;</p>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="card p-6">
+        <div class="mb-4">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect x="6" y="16" width="28" height="18" fill="#f3e8ff" stroke="#a855f7" stroke-width="1.5"/>
+            <rect x="10" y="8" width="20" height="8" fill="#a855f7" opacity="0.15" stroke="#a855f7" stroke-width="1"/>
+            <rect x="14" y="22" width="12" height="2" rx="1" fill="#a855f7" opacity="0.6"/>
+            <rect x="16" y="27" width="8" height="2" rx="1" fill="#a855f7" opacity="0.4"/>
+            <circle cx="20" cy="12" r="3" fill="#a855f7" opacity="0.5"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-bold text-base text-gray-900 mb-2">Website UMKM</h3>
+        <p class="font-sans text-sm text-gray-500 leading-relaxed">Toko online simpel atau profil usaha yang bisa langsung ditemukan di Google.</p>
+        <p class="font-mono text-xs neon-text-purple mt-4">mulai 400rb &rarr;</p>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="card p-6">
+        <div class="mb-4">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect x="6" y="8" width="28" height="26" rx="2" fill="#eff6ff" stroke="#3b7bff" stroke-width="1.5"/>
+            <rect x="10" y="14" width="20" height="3" rx="1" fill="#3b7bff" opacity="0.7"/>
+            <rect x="13" y="20" width="14" height="2" rx="1" fill="#3b7bff" opacity="0.4"/>
+            <rect x="13" y="25" width="14" height="2" rx="1" fill="#3b7bff" opacity="0.3"/>
+            <rect x="14" y="30" width="12" height="3" rx="1" fill="#3b7bff" opacity="0.6"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-bold text-base text-gray-900 mb-2">Landing Page</h3>
+        <p class="font-sans text-sm text-gray-500 leading-relaxed">Satu halaman yang fokus mengkonversi pengunjung jadi leads atau pembeli.</p>
+        <p class="font-mono text-xs neon-text-blue mt-4">mulai 300rb &rarr;</p>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="card p-6">
+        <div class="mb-4">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect x="4" y="10" width="32" height="22" rx="2" fill="#f0fdf4" stroke="#00cc7a" stroke-width="1.5"/>
+            <rect x="4" y="10" width="32" height="7" rx="2" fill="#00cc7a" opacity="0.1"/>
+            <circle cx="10" cy="13.5" r="1.5" fill="#ff6b6b" opacity="0.7"/>
+            <circle cx="16" cy="13.5" r="1.5" fill="#ffd93d" opacity="0.7"/>
+            <circle cx="22" cy="13.5" r="1.5" fill="#00cc7a" opacity="0.7"/>
+            <rect x="9" y="22" width="22" height="2" rx="1" fill="#00cc7a" opacity="0.4"/>
+            <rect x="9" y="27" width="14" height="2" rx="1" fill="#00cc7a" opacity="0.3"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-bold text-base text-gray-900 mb-2">Custom Website</h3>
+        <p class="font-sans text-sm text-gray-500 leading-relaxed">Desain dan fitur sesuai kebutuhan spesifik bisnis kamu. Diskusi dulu, ya!</p>
+        <p class="font-mono text-xs mt-4" style="color:#00cc7a;">harga custom &rarr;</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+
+<!-- ════════════════════════════════════════════
+     KEUNGGULAN SECTION
+════════════════════════════════════════════ -->
+<section id="keunggulan" class="py-24 bg-white section-fade">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="text-center mb-16">
+      <span class="tag mb-4 inline-block">// kenapa kami?</span>
+      <h2 class="font-mono font-bold text-3xl md:text-4xl text-gray-900">
+        Yang bikin kami <span class="neon-text">beda</span>.
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- Fast -->
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-gray-50 border border-gray-100 rounded-lg transition-all duration-300 group-hover:border-cyan-300" style="transition:all 0.3s ease;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M16 4 L20 14 L30 14 L22 20 L25 30 L16 24 L7 30 L10 20 L2 14 L12 14 Z" fill="#00f0ff" opacity="0.15" stroke="#00f0ff" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M16 8 L19 16 L27 16 L21 20 L23 28 L16 23 L9 28 L11 20 L5 16 L13 16 Z" fill="#00f0ff" opacity="0.4"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-bold text-lg text-gray-900 mb-2">Cepat</h3>
+        <p class="font-sans text-sm text-gray-500 leading-relaxed">Estimasi 3–7 hari kerja tergantung kompleksitas. Ga ada drama molor-molor.</p>
+      </div>
+
+      <!-- Affordable -->
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-gray-50 border border-gray-100 rounded-lg transition-all duration-300 group-hover:border-purple-300">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="12" fill="#f3e8ff" stroke="#a855f7" stroke-width="1.5"/>
+            <text x="16" y="21" text-anchor="middle" fill="#a855f7" font-size="13" font-family="monospace" font-weight="bold">Rp</text>
+          </svg>
+        </div>
+        <h3 class="font-mono font-bold text-lg text-gray-900 mb-2">Terjangkau</h3>
+        <p class="font-sans text-sm text-gray-500 leading-relaxed">Harga bersahabat untuk UMKM dan bisnis kecil. Kualitas premium, harga realistis.</p>
+      </div>
+
+      <!-- Support -->
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-gray-50 border border-gray-100 rounded-lg transition-all duration-300 group-hover:border-blue-300">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="4" y="8" width="18" height="14" rx="2" fill="#eff6ff" stroke="#3b7bff" stroke-width="1.5"/>
+            <path d="M8 22 L8 26 L14 22 Z" fill="#3b7bff" opacity="0.5"/>
+            <rect x="10" y="14" width="20" height="12" rx="2" fill="white" stroke="#3b7bff" stroke-width="1.5"/>
+            <circle cx="20" cy="20" r="2" fill="#3b7bff" opacity="0.6"/>
+            <circle cx="26" cy="20" r="2" fill="#3b7bff" opacity="0.4"/>
+            <circle cx="14" cy="20" r="2" fill="#3b7bff" opacity="0.8"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-bold text-lg text-gray-900 mb-2">Support Friendly</h3>
+        <p class="font-sans text-sm text-gray-500 leading-relaxed">Ada yang bisa dihubungi kalau ada kendala. Ga dianggurin setelah project kelar.</p>
+      </div>
+
+      <!-- Revisi -->
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-gray-50 border border-gray-100 rounded-lg transition-all duration-300 group-hover:border-green-300">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M6 16 C6 10.477 10.477 6 16 6 C20 6 23.5 8.2 25.3 11.5" stroke="#00cc7a" stroke-width="2" stroke-linecap="round"/>
+            <path d="M26 16 C26 21.523 21.523 26 16 26 C12 26 8.5 23.8 6.7 20.5" stroke="#00cc7a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+            <path d="M23 8 L26 11.5 L29 8.5" stroke="#00cc7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 24 L6 20.5 L3 23.5" stroke="#00cc7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-bold text-lg text-gray-900 mb-2">Revisi Fleksibel</h3>
+        <p class="font-sans text-sm text-gray-500 leading-relaxed">Sampai kamu puas. Kami kerja sama, bukan ngasih jadi terus bubar.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+
+<!-- ════════════════════════════════════════════
+     PORTFOLIO SECTION
+════════════════════════════════════════════ -->
+<section id="portfolio" class="py-24 bg-gray-50 section-fade">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="text-center mb-16">
+      <span class="tag mb-4 inline-block">// portofolio</span>
+      <h2 class="font-mono font-bold text-3xl md:text-4xl text-gray-900">
+        Beberapa <span class="neon-text">karya</span> kami.
+      </h2>
+      <p class="font-sans text-gray-500 mt-3 text-sm">Setiap website dibuat dengan perhatian penuh.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Project 1 -->
+      <div class="card overflow-hidden">
+        <div class="portfolio-thumb">
+          <svg width="240" height="160" viewBox="0 0 240 160" fill="none">
+            <rect width="240" height="160" fill="#0d1117"/>
+            <rect x="20" y="15" width="200" height="130" rx="3" fill="#1a1a2e" stroke="#00f0ff" stroke-width="0.8" opacity="0.8"/>
+            <rect x="20" y="15" width="200" height="20" rx="3" fill="#1a1a2e" stroke="#00f0ff" stroke-width="0.8"/>
+            <circle cx="32" cy="25" r="3" fill="#ff6b6b" opacity="0.7"/>
+            <circle cx="42" cy="25" r="3" fill="#ffd93d" opacity="0.7"/>
+            <circle cx="52" cy="25" r="3" fill="#00f0ff" opacity="0.5"/>
+            <rect x="28" y="43" width="120" height="6" rx="1" fill="#00f0ff" opacity="0.8"/>
+            <rect x="28" y="54" width="80" height="4" rx="1" fill="#a855f7" opacity="0.5"/>
+            <rect x="28" y="63" width="60" height="4" rx="1" fill="#3b7bff" opacity="0.4"/>
+            <rect x="28" y="72" width="50" height="12" rx="2" fill="#00f0ff" opacity="0.2" stroke="#00f0ff" stroke-width="0.8"/>
+            <rect x="28" y="95" width="55" height="35" rx="2" fill="#ffffff" opacity="0.06" stroke="#00f0ff" stroke-width="0.5"/>
+            <rect x="92" y="95" width="55" height="35" rx="2" fill="#ffffff" opacity="0.06" stroke="#a855f7" stroke-width="0.5"/>
+            <rect x="156" y="95" width="55" height="35" rx="2" fill="#ffffff" opacity="0.06" stroke="#3b7bff" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-mono font-bold text-sm text-gray-900">Warung Mak Sri</h3>
+            <span class="tag text-xs">UMKM</span>
+          </div>
+          <p class="font-sans text-xs text-gray-500 leading-relaxed mb-3">Landing page catering rumahan di Bandung. Fokus di menu dan kontak WhatsApp.</p>
+          <div class="flex gap-2 flex-wrap">
+            <span class="font-mono text-xs text-gray-400 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">HTML</span>
+            <span class="font-mono text-xs text-gray-400 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">Tailwind</span>
+            <span class="font-mono text-xs text-gray-400 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">JS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="card overflow-hidden">
+        <div class="portfolio-thumb" style="background:#f5f0ff;">
+          <svg width="240" height="160" viewBox="0 0 240 160" fill="none">
+            <rect width="240" height="160" fill="#0d0d1a"/>
+            <rect x="20" y="15" width="200" height="130" rx="3" fill="#12001a" stroke="#a855f7" stroke-width="0.8" opacity="0.8"/>
+            <rect x="20" y="15" width="200" height="20" rx="3" fill="#12001a" stroke="#a855f7" stroke-width="0.8"/>
+            <circle cx="32" cy="25" r="3" fill="#ff6b6b" opacity="0.7"/>
+            <circle cx="42" cy="25" r="3" fill="#ffd93d" opacity="0.7"/>
+            <circle cx="52" cy="25" r="3" fill="#a855f7" opacity="0.5"/>
+            <circle cx="120" cy="65" r="18" fill="#a855f7" opacity="0.15" stroke="#a855f7" stroke-width="0.8"/>
+            <rect x="90" y="88" width="60" height="5" rx="1" fill="#a855f7" opacity="0.7"/>
+            <rect x="100" y="97" width="40" height="3" rx="1" fill="#a855f7" opacity="0.4"/>
+            <rect x="28" y="108" width="40" height="28" rx="2" fill="#a855f7" opacity="0.1" stroke="#a855f7" stroke-width="0.5"/>
+            <rect x="76" y="108" width="40" height="28" rx="2" fill="#a855f7" opacity="0.1" stroke="#a855f7" stroke-width="0.5"/>
+            <rect x="124" y="108" width="40" height="28" rx="2" fill="#a855f7" opacity="0.1" stroke="#a855f7" stroke-width="0.5"/>
+            <rect x="172" y="108" width="40" height="28" rx="2" fill="#a855f7" opacity="0.1" stroke="#a855f7" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-mono font-bold text-sm text-gray-900">Dita Freelance</h3>
+            <span class="tag text-xs" style="border-color:#a855f755;color:#a855f7;background:#a855f70a;">Personal Brand</span>
+          </div>
+          <p class="font-sans text-xs text-gray-500 leading-relaxed mb-3">Portfolio website untuk graphic designer freelance. Warna ungu, elegant.</p>
+          <div class="flex gap-2 flex-wrap">
+            <span class="font-mono text-xs text-gray-400 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">Next.js</span>
+            <span class="font-mono text-xs text-gray-400 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">CSS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="card overflow-hidden">
+        <div class="portfolio-thumb" style="background:#f0f4ff;">
+          <svg width="240" height="160" viewBox="0 0 240 160" fill="none">
+            <rect width="240" height="160" fill="#0d1020"/>
+            <rect x="20" y="15" width="200" height="130" rx="3" fill="#0d1020" stroke="#3b7bff" stroke-width="0.8" opacity="0.8"/>
+            <rect x="20" y="15" width="200" height="20" rx="3" fill="#0d1020" stroke="#3b7bff" stroke-width="0.8"/>
+            <circle cx="32" cy="25" r="3" fill="#ff6b6b" opacity="0.7"/>
+            <circle cx="42" cy="25" r="3" fill="#ffd93d" opacity="0.7"/>
+            <circle cx="52" cy="25" r="3" fill="#3b7bff" opacity="0.5"/>
+            <rect x="100" y="22" width="20" height="3" rx="1" fill="#3b7bff" opacity="0.5"/>
+            <rect x="128" y="22" width="20" height="3" rx="1" fill="#3b7bff" opacity="0.5"/>
+            <rect x="156" y="22" width="20" height="3" rx="1" fill="#3b7bff" opacity="0.5"/>
+            <rect x="28" y="42" width="90" height="60" rx="2" fill="#1a2040" stroke="#3b7bff" stroke-width="0.5"/>
+            <rect x="125" y="42" width="90" height="8" rx="1" fill="#3b7bff" opacity="0.6"/>
+            <rect x="125" y="54" width="70" height="4" rx="1" fill="#3b7bff" opacity="0.3"/>
+            <rect x="125" y="62" width="80" height="4" rx="1" fill="#3b7bff" opacity="0.25"/>
+            <rect x="125" y="70" width="55" height="4" rx="1" fill="#3b7bff" opacity="0.2"/>
+            <rect x="125" y="81" width="45" height="10" rx="2" fill="#3b7bff" opacity="0.3" stroke="#3b7bff" stroke-width="0.6"/>
+            <rect x="28" y="110" width="184" height="22" rx="2" fill="#1a2040" opacity="0.8"/>
+            <rect x="40" y="118" width="60" height="4" rx="1" fill="#3b7bff" opacity="0.5"/>
+            <rect x="160" y="118" width="40" height="4" rx="1" fill="#3b7bff" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-mono font-bold text-sm text-gray-900">CV Maju Bersama</h3>
+            <span class="tag text-xs" style="border-color:#3b7bff55;color:#3b7bff;background:#3b7bff0a;">Company Profile</span>
+          </div>
+          <p class="font-sans text-xs text-gray-500 leading-relaxed mb-3">Website profil perusahaan kontraktor lokal. Formal, clean, dan mudah dinavigasi.</p>
+          <div class="flex gap-2 flex-wrap">
+            <span class="font-mono text-xs text-gray-400 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">WordPress</span>
+            <span class="font-mono text-xs text-gray-400 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">Custom Theme</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+
+<!-- ════════════════════════════════════════════
+     TESTIMONI SECTION
+════════════════════════════════════════════ -->
+<section id="testimoni" class="py-24 bg-white section-fade">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="text-center mb-16">
+      <span class="tag mb-4 inline-block">// testimoni</span>
+      <h2 class="font-mono font-bold text-3xl md:text-4xl text-gray-900">
+        Kata mereka yang udah<br>pake <span class="neon-text">bisabikinweb</span>.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- Testi 1 -->
+      <div class="testi-card">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded bg-gradient-to-br from-cyan-100 to-cyan-200 border border-cyan-200 flex items-center justify-center font-mono font-bold text-sm text-cyan-600">SR</div>
+          <div>
+            <p class="font-mono font-bold text-sm text-gray-900">Sri Rahayu</p>
+            <p class="font-sans text-xs text-gray-400">Owner Catering Mak Sri</p>
+          </div>
+          <div class="ml-auto">
+            <span class="text-yellow-400 text-xs">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          </div>
+        </div>
+        <p class="font-sans text-sm text-gray-600 leading-relaxed italic">
+          "Awalnya saya bingung mau mulai dari mana. Sama bisabikinweb semua diurusin, prosesnya santai banget, hasilnya bagus! Sekarang order catering naik 3x."
+        </p>
+        <p class="font-mono text-xs text-gray-300 mt-4">// Bandung, 2024</p>
+      </div>
+
+      <!-- Testi 2 -->
+      <div class="testi-card">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded bg-gradient-to-br from-purple-100 to-purple-200 border border-purple-200 flex items-center justify-center font-mono font-bold text-sm text-purple-600">DP</div>
+          <div>
+            <p class="font-mono font-bold text-sm text-gray-900">Dita Pratiwi</p>
+            <p class="font-sans text-xs text-gray-400">Graphic Designer Freelance</p>
+          </div>
+          <div class="ml-auto">
+            <span class="text-yellow-400 text-xs">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          </div>
+        </div>
+        <p class="font-sans text-sm text-gray-600 leading-relaxed italic">
+          "Portfolio ku jadi kelihatan jauh lebih profesional. Revisinya ga dibatesin, dan mas developer-nya ngerti banget vibe yang aku mau. Recommended!"
+        </p>
+        <p class="font-mono text-xs text-gray-300 mt-4">// Jakarta, 2024</p>
+      </div>
+
+      <!-- Testi 3 -->
+      <div class="testi-card">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded bg-gradient-to-br from-blue-100 to-blue-200 border border-blue-200 flex items-center justify-center font-mono font-bold text-sm text-blue-600">BH</div>
+          <div>
+            <p class="font-mono font-bold text-sm text-gray-900">Budi Hartono</p>
+            <p class="font-sans text-xs text-gray-400">Direktur CV Maju Bersama</p>
+          </div>
+          <div class="ml-auto">
+            <span class="text-yellow-400 text-xs">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+          </div>
+        </div>
+        <p class="font-sans text-sm text-gray-600 leading-relaxed italic">
+          "Harganya masuk akal untuk kualitas yang didapat. Prosesnya transparan, ga ada biaya tersembunyi. Website perusahaan kami sekarang bisa ditemukan di Google."
+        </p>
+        <p class="font-mono text-xs text-gray-300 mt-4">// Surabaya, 2025</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+
+<!-- ════════════════════════════════════════════
+     CTA / CONTACT SECTION
+════════════════════════════════════════════ -->
+<section id="contact" class="py-24 bg-gray-50 section-fade">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+
+    <!-- Terminal window decoration -->
+    <div class="inline-block bg-gray-900 rounded-lg px-6 py-3 mb-8 text-left w-full max-w-sm">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-400 opacity-70"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 opacity-70"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-green-400 opacity-70"></span>
+      </div>
+      <p class="font-mono text-xs text-gray-400">
+        <span class="term-prefix">$ </span>
+        <span class="text-white">contact --via whatsapp</span>
+      </p>
+      <p class="font-mono text-xs text-green-400 mt-1">&#10003; Respon dalam 1 jam</p>
+    </div>
+
+    <span class="tag mb-4 inline-block">// ayo mulai</span>
+    <h2 class="font-mono font-bold text-3xl md:text-5xl text-gray-900 mb-4">
+      Siap punya<br>
+      <span class="neon-text">website</span> impianmu?
+    </h2>
+    <p class="font-sans text-gray-500 text-base md:text-lg mb-10 max-w-lg mx-auto">
+      Konsultasi gratis, tanpa komitmen. Ceritain kebutuhanmu dan kita diskusi bareng.
+    </p>
+
+    <!-- WhatsApp CTA button -->
+    <a href="https://wa.me/6281234567890?text=Halo%20Bisabikinweb%2C%20saya%20mau%20konsultasi%20tentang%20pembuatan%20website" target="_blank" rel="noopener noreferrer" class="btn-wa">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+      Chat via WhatsApp
+    </a>
+
+    <p class="font-mono text-xs text-gray-400 mt-6">
+      atau email ke <a href="mailto:hello@bisabikinweb.id" class="neon-text hover:underline">hello@bisabikinweb.id</a>
+    </p>
+
+    <!-- Process steps -->
+    <div class="mt-16 grid sm:grid-cols-3 gap-8 text-left">
+      <div class="flex gap-4">
+        <div class="flex-shrink-0 w-8 h-8 bg-gray-900 rounded flex items-center justify-center font-mono text-xs font-bold neon-text border border-cyan-500/30">01</div>
+        <div>
+          <p class="font-mono font-bold text-sm text-gray-900 mb-1">Konsultasi</p>
+          <p class="font-sans text-xs text-gray-500">Ceritain kebutuhan &amp; anggaran kamu via WA.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="flex-shrink-0 w-8 h-8 bg-gray-900 rounded flex items-center justify-center font-mono text-xs font-bold neon-text-purple border border-purple-500/30">02</div>
+        <div>
+          <p class="font-mono font-bold text-sm text-gray-900 mb-1">Desain &amp; Dev</p>
+          <p class="font-sans text-xs text-gray-500">Kami kerjakan, kamu review &amp; revisi sesukamu.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="flex-shrink-0 w-8 h-8 bg-gray-900 rounded flex items-center justify-center font-mono text-xs font-bold neon-text-blue border border-blue-500/30">03</div>
+        <div>
+          <p class="font-mono font-bold text-sm text-gray-900 mb-1">Launch!</p>
+          <p class="font-sans text-xs text-gray-500">Website live, domain &amp; hosting siap dibantu.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="bg-gray-900 text-gray-400 py-12">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+
+      <!-- Brand column -->
+      <div class="sm:col-span-2 md:col-span-1">
+        <a href="#hero" class="font-mono font-bold text-lg flex items-center gap-2 mb-3">
+          <span class="pixel-dot"></span>
+          <span class="text-white">bisabikn</span><span class="neon-text">web</span>
+        </a>
+        <p class="font-sans text-xs text-gray-500 leading-relaxed">
+          Jasa pembuatan website profesional untuk UMKM &amp; personal brand. Fast, clean, affordable.
+        </p>
+      </div>
+
+      <!-- Layanan -->
+      <div>
+        <h4 class="font-mono text-xs text-gray-300 font-bold mb-3 uppercase tracking-wider">Layanan</h4>
+        <ul class="space-y-2 text-xs font-sans">
+          <li><a href="#services" class="hover:text-gray-200 transition-colors">Company Profile</a></li>
+          <li><a href="#services" class="hover:text-gray-200 transition-colors">Website UMKM</a></li>
+          <li><a href="#services" class="hover:text-gray-200 transition-colors">Landing Page</a></li>
+          <li><a href="#services" class="hover:text-gray-200 transition-colors">Custom Website</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontak -->
+      <div>
+        <h4 class="font-mono text-xs text-gray-300 font-bold mb-3 uppercase tracking-wider">Kontak</h4>
+        <ul class="space-y-2 text-xs font-sans">
+          <li>
+            <a href="https://wa.me/6281234567890" class="hover:text-gray-200 transition-colors flex items-center gap-1">
+              <span class="text-green-400">&#9679;</span> WA: 0812-3456-7890
+            </a>
+          </li>
+          <li><a href="mailto:hello@bisabikinweb.id" class="hover:text-gray-200 transition-colors">hello@bisabikinweb.id</a></li>
+          <li class="text-gray-600">Indonesia</li>
+        </ul>
+      </div>
+
+      <!-- Sosmed -->
+      <div>
+        <h4 class="font-mono text-xs text-gray-300 font-bold mb-3 uppercase tracking-wider">Sosmed</h4>
+        <ul class="space-y-2 text-xs font-sans">
+          <li>
+            <a href="#" class="hover:text-gray-200 transition-colors flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-pink-400"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              @bisabikinweb
+            </a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-gray-200 transition-colors flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-blue-400"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+              @bisabikinweb
+            </a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-gray-200 transition-colors flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-blue-500"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              bisabikinweb
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="font-mono text-xs text-gray-600">
+        &copy; 2025 bisabikinweb. Built with <span class="neon-text">&#10084;</span> + code.
+      </p>
+      <p class="font-mono text-xs text-gray-700">
+        <span class="term-prefix">$ </span>status: <span class="text-green-400">open for projects</span>
+        <span class="term-cursor text-green-400 text-sm">_</span>
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════ -->
+<script>
+  // ── Typing effect ─────────────────────────────
+  const phrases = [
+    'website_untuk_usahamu.launch()',
+    'branding_profesional.create()',
+    'pelanggan_baru.attract()',
+    'bisnis_online.grow()',
+  ];
+  let phraseIdx = 0, charIdx = 0, isDeleting = false;
+  const typingEl = document.getElementById('typing-text');
+
+  function type() {
+    const current = phrases[phraseIdx];
+    typingEl.textContent = isDeleting
+      ? current.slice(0, --charIdx)
+      : current.slice(0, ++charIdx);
+
+    let delay = isDeleting ? 40 : 80;
+    if (!isDeleting && charIdx === current.length) {
+      delay = 1800; isDeleting = true;
+    } else if (isDeleting && charIdx === 0) {
+      isDeleting = false;
+      phraseIdx = (phraseIdx + 1) % phrases.length;
+      delay = 400;
+    }
+    setTimeout(type, delay);
+  }
+  type();
+
+
+  // ── Scroll fade-in observer ───────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.section-fade').forEach(el => observer.observe(el));
+
+
+  // ── Mobile nav toggle ─────────────────────────
+  const navToggle  = document.getElementById('nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen   = document.getElementById('icon-open');
+  const iconClose  = document.getElementById('icon-close');
+
+  navToggle.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden', !isHidden);
+    iconClose.classList.toggle('hidden', isHidden);
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+  }
+
+
+  // ── Active nav highlight on scroll ───────────
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('nav a[href^="#"]');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = '';
+      if (a.getAttribute('href') === '#' + current && !a.classList.contains('btn-neon')) {
+        a.style.color = '#1a1a2e';
+      }
+    });
+  }, { passive: true });
+</script>
+
+</body>
+</html>
