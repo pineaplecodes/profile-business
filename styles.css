@@ -1,0 +1,360 @@
+/* ── Dark Mode CSS Variables ── */
+:root {
+  --bg-primary: #fafafa;
+  --bg-secondary: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #666666;
+  --border-color: #e5e7eb;
+  --border-dark: #1a1a2e;
+  --nav-bg: rgba(250, 250, 250, 0.85);
+  --card-bg: #ffffff;
+  --grid-line: #b300ff08;
+  --scroll-track: #fafafa;
+  --scroll-thumb: #b300ff55;
+  --testi-bg: #fff;
+  --portfolio-bg: #f0f9ff;
+  --hero-text: #1a1a2e;
+  --secondary-text: #666666;
+}
+
+html.dark-mode {
+  --bg-primary: #0f0f1e;
+  --bg-secondary: #1a1a2e;
+  --text-primary: #e5e7eb;
+  --text-secondary: #a0a0a0;
+  --border-color: #2d2d44;
+  --nav-bg: rgba(15, 15, 30, 0.85);
+  --card-bg: #1a1a2e;
+  --grid-line: #b300ff03;
+  --scroll-track: #0f0f1e;
+  --scroll-thumb: #b300ff77;
+  --testi-bg: #1a1a2e;
+  --portfolio-bg: #141422;
+  --hero-text: #e5e7eb;
+  --secondary-text: #a0a0a0;
+}
+
+/* ── Global ── */
+* { scroll-behavior: smooth; }
+body { 
+  font-family: 'JetBrains Mono', monospace; 
+  background: var(--bg-primary); 
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ── Neon text glow ── */
+.neon-text {
+  color: #b300ff;
+  text-shadow: 0 0 8px #b300ff99, 0 0 24px #b300ff44;
+}
+.neon-text-purple {
+  color: #a855f7;
+  text-shadow: 0 0 8px #a855f799, 0 0 24px #a855f744;
+}
+.neon-text-blue {
+  color: #3b7bff;
+  text-shadow: 0 0 8px #3b7bff99, 0 0 24px #3b7bff44;
+}
+
+/* ── Neon button ── */
+.btn-neon {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: transparent;
+  color: #b300ff;
+  border: 1.5px solid #b300ff;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #b300ff33, inset 0 0 10px #b300ff11;
+  animation: glowPulse 2.5s ease-in-out infinite;
+  text-decoration: none;
+}
+.btn-neon:hover {
+  background: #b300ff15;
+  box-shadow: 0 0 24px #b300ff88, inset 0 0 18px #b300ff22;
+  transform: translateY(-2px);
+}
+
+/* ── Neon button (filled) ── */
+.btn-neon-fill {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  background: linear-gradient(135deg, #b300ff22, #3b7bff22);
+  color: #b300ff;
+  border: 1.5px solid #b300ff;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px #b300ff44;
+  text-decoration: none;
+}
+.btn-neon-fill:hover {
+  background: linear-gradient(135deg, #b300ff33, #3b7bff33);
+  box-shadow: 0 0 36px #b300ffaa;
+  transform: translateY(-2px);
+}
+
+/* ── Neon WA button ── */
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #b300ff18, #a855f718);
+  color: #b300ff;
+  border: 1.5px solid #b300ff;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 28px #b300ff55;
+  text-decoration: none;
+}
+.btn-wa:hover {
+  background: linear-gradient(135deg, #b300ff28, #a855f728);
+  box-shadow: 0 0 48px #b300ffaa;
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* ── Card base ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #b300ff, #3b7bff, #a855f7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.card:hover {
+  border-color: #b300ff55;
+  box-shadow: 0 8px 32px #b300ff18, 0 2px 8px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+html.dark-mode .card:hover {
+  box-shadow: 0 8px 32px #b300ff22, 0 2px 8px rgba(0,0,0,0.3);
+}
+.card:hover::before { opacity: 1; }
+
+/* ── Section fade in ── */
+.section-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.section-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Pixel decoration ── */
+.pixel-dot {
+  width: 6px; height: 6px;
+  background: #b300ff;
+  display: inline-block;
+  box-shadow: 0 0 6px #b300ff;
+}
+
+/* ── Terminal prefix ── */
+.term-prefix { color: #a855f7; }
+.term-cursor { display: inline-block; animation: blink 1s step-end infinite; }
+
+/* ── Nav sticky glass ── */
+nav {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ── Hero grid bg ── */
+.hero-grid {
+  background-image:
+    linear-gradient(#b300ff08 1px, transparent 1px),
+    linear-gradient(90deg, #b300ff08 1px, transparent 1px);
+  background-size: 40px 40px;
+  transition: background-image 0.3s ease;
+}
+
+/* ── Testimonial card ── */
+.testi-card {
+  background: var(--testi-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.testi-card:hover {
+  border-color: #a855f755;
+  box-shadow: 0 4px 24px #a855f718;
+}
+html.dark-mode .testi-card:hover {
+  box-shadow: 0 4px 24px #a855f722;
+}
+.testi-card::after {
+  content: '"';
+  position: absolute;
+  top: -12px; right: 16px;
+  font-size: 5rem;
+  color: #b300ff18;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+html.dark-mode .testi-card::after {
+  color: #b300ff08;
+}
+
+/* ── Portfolio thumbnail ── */
+.portfolio-thumb {
+  width: 100%; height: 180px;
+  background: var(--portfolio-bg);
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid var(--border-color);
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--scroll-track); transition: background 0.3s ease; }
+::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 3px; transition: background 0.3s ease; }
+
+/* ── Tag label ── */
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid #b300ff55;
+  border-radius: 2px;
+  font-size: 0.7rem;
+  color: #b300ff;
+  background: #b300ff0a;
+  transition: all 0.3s ease;
+}
+html.dark-mode .tag {
+  background: #b300ff08;
+}
+
+/* ── Dark Mode Toggle Button ── */
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 40;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b300ff22, #3b7bff22);
+  border: 1.5px solid #b300ff;
+  color: #b300ff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px #b300ff44;
+  font-size: 1.5rem;
+}
+.dark-mode-toggle:hover {
+  background: linear-gradient(135deg, #b300ff33, #3b7bff33);
+  box-shadow: 0 0 40px #b300ffaa;
+  transform: scale(1.1);
+}
+.dark-mode-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Mobile responsive toggle */
+@media (max-width: 640px) {
+  .dark-mode-toggle {
+    width: 48px;
+    height: 48px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.2rem;
+  }
+}
+
+/* ── Divider ── */
+.neon-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #b300ff44, #a855f744, transparent);
+}
+
+/* ── Dark Mode Tailwind Overrides ── */
+html.dark-mode .text-gray-900 { color: #e5e7eb; }
+html.dark-mode .text-gray-800 { color: #d1d5db; }
+html.dark-mode .text-gray-700 { color: #d1d5db; }
+html.dark-mode .text-gray-600 { color: #9ca3af; }
+html.dark-mode .text-gray-500 { color: #9ca3af; }
+html.dark-mode .text-gray-400 { color: #6b7280; }
+html.dark-mode .text-gray-300 { color: #4b5563; }
+
+html.dark-mode .bg-white { background-color: #1a1a2e; }
+html.dark-mode .bg-gray-100 { background-color: #252535; }
+html.dark-mode .bg-gray-50 { background-color: #0f0f1e; }
+
+html.dark-mode .border-gray-100 { border-color: #2d2d44; }
+html.dark-mode .border-gray-200 { border-color: #2d2d44; }
+html.dark-mode .border-gray-300 { border-color: #3a3a52; }
+html.dark-mode .border-gray-700 { border-color: #2d2d44; }
+html.dark-mode .border-gray-800 { border-color: #1a1a2e; }
+
+html.dark-mode .hover\:text-gray-900:hover { color: #e5e7eb; }
+html.dark-mode .hover\:text-gray-800:hover { color: #d1d5db; }
+html.dark-mode .hover\:border-gray-400:hover { border-color: #4b5563; }
+
+html.dark-mode .bg-white\/95 { background-color: rgba(26, 26, 46, 0.95); }
+html.dark-mode .bg-gray-900 { background-color: #0f0f1e; }
+
+html.dark-mode .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); }
+html.dark-mode .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6); }
+
+/* ── Footer styling (same in light & dark mode) ── */
+footer {
+  background: #111827;
+  color: #d1d5db;
+}
+footer .text-gray-400 { color: #d1d5db; }
+footer .text-gray-500 { color: #d1d5db; }
+footer .text-gray-600 { color: #9ca3af; }
+footer .text-gray-700 { color: #d1d5db; }
+footer .text-white { color: #ffffff; }
+footer .text-gray-300 { color: #d1d5db; }
+footer .hover\:text-gray-200:hover { color: #e5e7eb; }
+footer .border-gray-800 { border-color: #2d3748; }
+
+html.dark-mode footer {
+  background: #111827;
+  color: #d1d5db;
+}
+html.dark-mode footer .text-gray-400 { color: #d1d5db; }
+html.dark-mode footer .text-gray-500 { color: #d1d5db; }
+html.dark-mode footer .text-gray-600 { color: #9ca3af; }
+html.dark-mode footer .text-gray-700 { color: #d1d5db; }
+html.dark-mode footer .text-white { color: #ffffff; }
+html.dark-mode footer .text-gray-300 { color: #d1d5db; }
+html.dark-mode footer .hover\:text-gray-200:hover { color: #e5e7eb; }
+html.dark-mode footer .border-gray-800 { border-color: #2d3748; }
