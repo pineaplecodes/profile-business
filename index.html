@@ -22,7 +22,7 @@
           },
           colors: {
             neon: {
-              cyan:   '#00f0ff',
+              cyan:   '#b300ff',
               blue:   '#3b7bff',
               purple: '#a855f7',
               green:  '#00ff9f',
@@ -44,8 +44,8 @@
               '50%':      { opacity: '0' },
             },
             glowPulse: {
-              '0%, 100%': { boxShadow: '0 0 8px #00f0ff55, 0 0 24px #00f0ff22' },
-              '50%':      { boxShadow: '0 0 18px #00f0ffaa, 0 0 48px #00f0ff44' },
+              '0%, 100%': { boxShadow: '0 0 8px #b300ff55, 0 0 24px #b300ff22' },
+              '50%':      { boxShadow: '0 0 18px #b300ffaa, 0 0 48px #b300ff44' },
             },
             float: {
               '0%, 100%': { transform: 'translateY(0px)' },
@@ -58,14 +58,55 @@
   </script>
 
   <style>
+    /* ── Dark Mode CSS Variables ── */
+    :root {
+      --bg-primary: #fafafa;
+      --bg-secondary: #ffffff;
+      --text-primary: #1a1a2e;
+      --text-secondary: #666666;
+      --border-color: #e5e7eb;
+      --border-dark: #1a1a2e;
+      --nav-bg: rgba(250, 250, 250, 0.85);
+      --card-bg: #ffffff;
+      --grid-line: #b300ff08;
+      --scroll-track: #fafafa;
+      --scroll-thumb: #b300ff55;
+      --testi-bg: #fff;
+      --portfolio-bg: #f0f9ff;
+      --hero-text: #1a1a2e;
+      --secondary-text: #666666;
+    }
+
+    html.dark-mode {
+      --bg-primary: #0f0f1e;
+      --bg-secondary: #1a1a2e;
+      --text-primary: #e5e7eb;
+      --text-secondary: #a0a0a0;
+      --border-color: #2d2d44;
+      --nav-bg: rgba(15, 15, 30, 0.85);
+      --card-bg: #1a1a2e;
+      --grid-line: #b300ff03;
+      --scroll-track: #0f0f1e;
+      --scroll-thumb: #b300ff77;
+      --testi-bg: #1a1a2e;
+      --portfolio-bg: #141422;
+      --hero-text: #e5e7eb;
+      --secondary-text: #a0a0a0;
+    }
+
     /* ── Global ── */
     * { scroll-behavior: smooth; }
-    body { font-family: 'JetBrains Mono', monospace; background: #fafafa; color: #1a1a2e; }
+    body { 
+      font-family: 'JetBrains Mono', monospace; 
+      background: var(--bg-primary); 
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
     /* ── Neon text glow ── */
     .neon-text {
-      color: #00f0ff;
-      text-shadow: 0 0 8px #00f0ff99, 0 0 24px #00f0ff44;
+      color: #b300ff;
+      text-shadow: 0 0 8px #b300ff99, 0 0 24px #b300ff44;
     }
     .neon-text-purple {
       color: #a855f7;
@@ -81,21 +122,21 @@
       display: inline-block;
       padding: 0.75rem 2rem;
       background: transparent;
-      color: #00f0ff;
-      border: 1.5px solid #00f0ff;
+      color: #b300ff;
+      border: 1.5px solid #b300ff;
       border-radius: 4px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.9rem;
       letter-spacing: 0.05em;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 0 10px #00f0ff33, inset 0 0 10px #00f0ff11;
+      box-shadow: 0 0 10px #b300ff33, inset 0 0 10px #b300ff11;
       animation: glowPulse 2.5s ease-in-out infinite;
       text-decoration: none;
     }
     .btn-neon:hover {
-      background: #00f0ff15;
-      box-shadow: 0 0 24px #00f0ff88, inset 0 0 18px #00f0ff22;
+      background: #b300ff15;
+      box-shadow: 0 0 24px #b300ff88, inset 0 0 18px #b300ff22;
       transform: translateY(-2px);
     }
 
@@ -103,9 +144,9 @@
     .btn-neon-fill {
       display: inline-block;
       padding: 0.85rem 2.2rem;
-      background: linear-gradient(135deg, #00f0ff22, #3b7bff22);
-      color: #00f0ff;
-      border: 1.5px solid #00f0ff;
+      background: linear-gradient(135deg, #b300ff22, #3b7bff22);
+      color: #b300ff;
+      border: 1.5px solid #b300ff;
       border-radius: 4px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.95rem;
@@ -113,12 +154,12 @@
       letter-spacing: 0.05em;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 0 20px #00f0ff44;
+      box-shadow: 0 0 20px #b300ff44;
       text-decoration: none;
     }
     .btn-neon-fill:hover {
-      background: linear-gradient(135deg, #00f0ff33, #3b7bff33);
-      box-shadow: 0 0 36px #00f0ffaa;
+      background: linear-gradient(135deg, #b300ff33, #3b7bff33);
+      box-shadow: 0 0 36px #b300ffaa;
       transform: translateY(-2px);
     }
 
@@ -128,9 +169,9 @@
       align-items: center;
       gap: 0.6rem;
       padding: 1rem 2.5rem;
-      background: linear-gradient(135deg, #00f0ff18, #a855f718);
-      color: #00f0ff;
-      border: 1.5px solid #00f0ff;
+      background: linear-gradient(135deg, #b300ff18, #a855f718);
+      color: #b300ff;
+      border: 1.5px solid #b300ff;
       border-radius: 4px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 1rem;
@@ -138,19 +179,19 @@
       letter-spacing: 0.06em;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 0 28px #00f0ff55;
+      box-shadow: 0 0 28px #b300ff55;
       text-decoration: none;
     }
     .btn-wa:hover {
-      background: linear-gradient(135deg, #00f0ff28, #a855f728);
-      box-shadow: 0 0 48px #00f0ffaa;
+      background: linear-gradient(135deg, #b300ff28, #a855f728);
+      box-shadow: 0 0 48px #b300ffaa;
       transform: translateY(-3px) scale(1.02);
     }
 
     /* ── Card base ── */
     .card {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       transition: all 0.3s ease;
       position: relative;
@@ -161,14 +202,17 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, #00f0ff, #3b7bff, #a855f7);
+      background: linear-gradient(90deg, #b300ff, #3b7bff, #a855f7);
       opacity: 0;
       transition: opacity 0.3s ease;
     }
     .card:hover {
-      border-color: #00f0ff55;
-      box-shadow: 0 8px 32px #00f0ff18, 0 2px 8px rgba(0,0,0,0.08);
+      border-color: #b300ff55;
+      box-shadow: 0 8px 32px #b300ff18, 0 2px 8px rgba(0,0,0,0.08);
       transform: translateY(-4px);
+    }
+    html.dark-mode .card:hover {
+      box-shadow: 0 8px 32px #b300ff22, 0 2px 8px rgba(0,0,0,0.3);
     }
     .card:hover::before { opacity: 1; }
 
@@ -186,9 +230,9 @@
     /* ── Pixel decoration ── */
     .pixel-dot {
       width: 6px; height: 6px;
-      background: #00f0ff;
+      background: #b300ff;
       display: inline-block;
-      box-shadow: 0 0 6px #00f0ff;
+      box-shadow: 0 0 6px #b300ff;
     }
 
     /* ── Terminal prefix ── */
@@ -199,22 +243,24 @@
     nav {
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      background: rgba(250, 250, 250, 0.85);
-      border-bottom: 1px solid #e5e7eb;
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
     /* ── Hero grid bg ── */
     .hero-grid {
       background-image:
-        linear-gradient(#00f0ff08 1px, transparent 1px),
-        linear-gradient(90deg, #00f0ff08 1px, transparent 1px);
+        linear-gradient(#b300ff08 1px, transparent 1px),
+        linear-gradient(90deg, #b300ff08 1px, transparent 1px);
       background-size: 40px 40px;
+      transition: background-image 0.3s ease;
     }
 
     /* ── Testimonial card ── */
     .testi-card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
+      background: var(--testi-bg);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 1.5rem;
       position: relative;
@@ -224,47 +270,154 @@
       border-color: #a855f755;
       box-shadow: 0 4px 24px #a855f718;
     }
+    html.dark-mode .testi-card:hover {
+      box-shadow: 0 4px 24px #a855f722;
+    }
     .testi-card::after {
       content: '"';
       position: absolute;
       top: -12px; right: 16px;
       font-size: 5rem;
-      color: #00f0ff18;
+      color: #b300ff18;
       font-family: Georgia, serif;
       line-height: 1;
+    }
+    html.dark-mode .testi-card::after {
+      color: #b300ff08;
     }
 
     /* ── Portfolio thumbnail ── */
     .portfolio-thumb {
       width: 100%; height: 180px;
-      background: #f0f9ff;
+      background: var(--portfolio-bg);
       display: flex; align-items: center; justify-content: center;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid var(--border-color);
       overflow: hidden;
       position: relative;
+      transition: background-color 0.3s ease;
     }
 
     /* ── Scrollbar ── */
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #fafafa; }
-    ::-webkit-scrollbar-thumb { background: #00f0ff55; border-radius: 3px; }
+    ::-webkit-scrollbar-track { background: var(--scroll-track); transition: background 0.3s ease; }
+    ::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 3px; transition: background 0.3s ease; }
 
     /* ── Tag label ── */
     .tag {
       display: inline-block;
       padding: 2px 10px;
-      border: 1px solid #00f0ff55;
+      border: 1px solid #b300ff55;
       border-radius: 2px;
       font-size: 0.7rem;
-      color: #00f0ff;
-      background: #00f0ff0a;
+      color: #b300ff;
+      background: #b300ff0a;
+      transition: all 0.3s ease;
+    }
+    html.dark-mode .tag {
+      background: #b300ff08;
+    }
+
+    /* ── Dark Mode Toggle Button ── */
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 40;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b300ff22, #3b7bff22);
+      border: 1.5px solid #b300ff;
+      color: #b300ff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px #b300ff44;
+      font-size: 1.5rem;
+    }
+    .dark-mode-toggle:hover {
+      background: linear-gradient(135deg, #b300ff33, #3b7bff33);
+      box-shadow: 0 0 40px #b300ffaa;
+      transform: scale(1.1);
+    }
+    .dark-mode-toggle:active {
+      transform: scale(0.95);
+    }
+
+    /* Mobile responsive toggle */
+    @media (max-width: 640px) {
+      .dark-mode-toggle {
+        width: 48px;
+        height: 48px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        font-size: 1.2rem;
+      }
     }
 
     /* ── Divider ── */
     .neon-divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, #00f0ff44, #a855f744, transparent);
+      background: linear-gradient(90deg, transparent, #b300ff44, #a855f744, transparent);
     }
+
+    /* ── Dark Mode Tailwind Overrides ── */
+    html.dark-mode .text-gray-900 { color: #e5e7eb; }
+    html.dark-mode .text-gray-800 { color: #d1d5db; }
+    html.dark-mode .text-gray-700 { color: #d1d5db; }
+    html.dark-mode .text-gray-600 { color: #9ca3af; }
+    html.dark-mode .text-gray-500 { color: #9ca3af; }
+    html.dark-mode .text-gray-400 { color: #6b7280; }
+    html.dark-mode .text-gray-300 { color: #4b5563; }
+    
+    html.dark-mode .bg-white { background-color: #1a1a2e; }
+    html.dark-mode .bg-gray-100 { background-color: #252535; }
+    html.dark-mode .bg-gray-50 { background-color: #0f0f1e; }
+    
+    html.dark-mode .border-gray-100 { border-color: #2d2d44; }
+    html.dark-mode .border-gray-200 { border-color: #2d2d44; }
+    html.dark-mode .border-gray-300 { border-color: #3a3a52; }
+    html.dark-mode .border-gray-700 { border-color: #2d2d44; }
+    html.dark-mode .border-gray-800 { border-color: #1a1a2e; }
+    
+    html.dark-mode .hover\:text-gray-900:hover { color: #e5e7eb; }
+    html.dark-mode .hover\:text-gray-800:hover { color: #d1d5db; }
+    html.dark-mode .hover\:border-gray-400:hover { border-color: #4b5563; }
+    
+    html.dark-mode .bg-white\/95 { background-color: rgba(26, 26, 46, 0.95); }
+    html.dark-mode .bg-gray-900 { background-color: #0f0f1e; }
+    
+    html.dark-mode .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); }
+    html.dark-mode .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6); }
+
+    /* ── Footer styling (same in light & dark mode) ── */
+    footer {
+      background: #111827;
+      color: #d1d5db;
+    }
+    footer .text-gray-400 { color: #d1d5db; }
+    footer .text-gray-500 { color: #d1d5db; }
+    footer .text-gray-600 { color: #9ca3af; }
+    footer .text-gray-700 { color: #d1d5db; }
+    footer .text-white { color: #ffffff; }
+    footer .text-gray-300 { color: #d1d5db; }
+    footer .hover\:text-gray-200:hover { color: #e5e7eb; }
+    footer .border-gray-800 { border-color: #2d3748; }
+
+    html.dark-mode footer {
+      background: #111827;
+      color: #d1d5db;
+    }
+    html.dark-mode footer .text-gray-400 { color: #d1d5db; }
+    html.dark-mode footer .text-gray-500 { color: #d1d5db; }
+    html.dark-mode footer .text-gray-600 { color: #9ca3af; }
+    html.dark-mode footer .text-gray-700 { color: #d1d5db; }
+    html.dark-mode footer .text-white { color: #ffffff; }
+    html.dark-mode footer .text-gray-300 { color: #d1d5db; }
+    html.dark-mode footer .hover\:text-gray-200:hover { color: #e5e7eb; }
+    html.dark-mode footer .border-gray-800 { border-color: #2d3748; }
   </style>
 </head>
 
@@ -280,7 +433,7 @@
     <a href="#hero" class="font-mono font-bold text-lg tracking-tight flex items-center gap-2">
       <span class="pixel-dot"></span>
       <span class="text-gray-900">bisabikn</span><span class="neon-text">web</span>
-      <span class="term-cursor text-neon-cyan" style="color:#00f0ff;">_</span>
+      <span class="term-cursor text-neon-cyan" style="color:#b300ff;">_</span>
     </a>
 
     <!-- Desktop links -->
@@ -355,7 +508,7 @@
 
         <!-- Trust badges -->
         <div class="mt-10 flex items-center gap-6 text-xs font-mono text-gray-400">
-          <span class="flex items-center gap-1"><span class="neon-text text-base">&#10003;</span> 30+ Project</span>
+          <span class="flex items-center gap-1"><span class="neon-text text-base">&#10003;</span> 10+ Project</span>
           <span class="flex items-center gap-1"><span class="neon-text text-base">&#10003;</span> Harga Transparan</span>
           <span class="flex items-center gap-1"><span class="neon-text text-base">&#10003;</span> Support 24/7</span>
         </div>
@@ -392,25 +545,25 @@
 
           <!-- Pixel dots decoration -->
           <div class="absolute -top-8 -right-8 opacity-30" style="display:grid;grid-template-columns:repeat(5,8px);gap:4px;">
-            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;background:#b300ff;box-shadow:0 0 4px #b300ff;"></div>
             <div style="width:8px;height:8px;"></div>
-            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;background:#b300ff;box-shadow:0 0 4px #b300ff;"></div>
             <div style="width:8px;height:8px;"></div>
-            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;background:#b300ff;box-shadow:0 0 4px #b300ff;"></div>
             <div style="width:8px;height:8px;"></div>
-            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;background:#b300ff;box-shadow:0 0 4px #b300ff;"></div>
             <div style="width:8px;height:8px;"></div>
-            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;background:#b300ff;box-shadow:0 0 4px #b300ff;"></div>
             <div style="width:8px;height:8px;"></div>
-            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;background:#b300ff;box-shadow:0 0 4px #b300ff;"></div>
             <div style="width:8px;height:8px;"></div>
-            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;background:#b300ff;box-shadow:0 0 4px #b300ff;"></div>
             <div style="width:8px;height:8px;"></div>
-            <div style="width:8px;height:8px;background:#00f0ff;box-shadow:0 0 4px #00f0ff;"></div>
+            <div style="width:8px;height:8px;background:#b300ff;box-shadow:0 0 4px #b300ff;"></div>
           </div>
 
           <!-- Neon glow behind card -->
-          <div class="absolute inset-0 -z-10 blur-3xl opacity-20 rounded-full scale-75" style="background:linear-gradient(135deg,#00f0ff,#a855f7);"></div>
+          <div class="absolute inset-0 -z-10 blur-3xl opacity-20 rounded-full scale-75" style="background:linear-gradient(135deg,#b300ff,#a855f7);"></div>
         </div>
       </div>
 
@@ -433,24 +586,24 @@
       <div class="flex justify-center">
         <div class="relative w-64 h-64">
           <svg viewBox="0 0 200 200" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="20" y="30" width="160" height="110" rx="4" fill="#1a1a2e" stroke="#00f0ff" stroke-width="1.5"/>
+            <rect x="20" y="30" width="160" height="110" rx="4" fill="#1a1a2e" stroke="#b300ff" stroke-width="1.5"/>
             <rect x="28" y="38" width="144" height="94" fill="#0d1117"/>
-            <rect x="36" y="50" width="80" height="4" rx="1" fill="#00f0ff" opacity="0.8"/>
+            <rect x="36" y="50" width="80" height="4" rx="1" fill="#b300ff" opacity="0.8"/>
             <rect x="36" y="62" width="60" height="3" rx="1" fill="#a855f7" opacity="0.6"/>
             <rect x="36" y="73" width="100" height="3" rx="1" fill="#3b7bff" opacity="0.5"/>
-            <rect x="36" y="84" width="50" height="3" rx="1" fill="#00f0ff" opacity="0.4"/>
+            <rect x="36" y="84" width="50" height="3" rx="1" fill="#b300ff" opacity="0.4"/>
             <rect x="36" y="95" width="90" height="3" rx="1" fill="#a855f7" opacity="0.3"/>
             <rect x="36" y="106" width="70" height="3" rx="1" fill="#3b7bff" opacity="0.3"/>
-            <rect x="36" y="118" width="6" height="8" rx="1" fill="#00f0ff" opacity="0.9">
+            <rect x="36" y="118" width="6" height="8" rx="1" fill="#b300ff" opacity="0.9">
               <animate attributeName="opacity" values="0.9;0;0.9" dur="1s" repeatCount="indefinite"/>
             </rect>
             <rect x="90" y="140" width="20" height="16" rx="1" fill="#1a1a2e" stroke="#374151" stroke-width="1"/>
             <rect x="70" y="154" width="60" height="6" rx="2" fill="#1a1a2e" stroke="#374151" stroke-width="1"/>
-            <circle cx="160" cy="38" r="3" fill="#00f0ff" opacity="0.6">
+            <circle cx="160" cy="38" r="3" fill="#b300ff" opacity="0.6">
               <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
             </circle>
           </svg>
-          <div class="absolute inset-0 -z-10 blur-2xl opacity-10 rounded-full" style="background:#00f0ff;"></div>
+          <div class="absolute inset-0 -z-10 blur-2xl opacity-10 rounded-full" style="background:#b300ff;"></div>
         </div>
       </div>
 
@@ -462,8 +615,8 @@
         </h2>
         <div class="font-sans text-gray-500 space-y-4 leading-relaxed">
           <p>
-            <strong class="text-gray-700">Bisabikinweb</strong> adalah tim developer indie yang fokus bantu
-            UMKM, personal brand, dan bisnis kecil-menengah buat website yang beneran keren — bukan asal jadi.
+            <strong class="text-gray-700">Bisabikinweb</strong> fokus bantu
+            UMKM, personal brand, dan bisnis kecil-menengah buat website yang beneran keren, bukan asal jadi.
           </p>
           <p>
             Kami percaya website yang bagus itu <span class="font-mono text-sm neon-text-blue">simpel</span>,
@@ -479,7 +632,7 @@
         <!-- Stats row -->
         <div class="mt-8 grid grid-cols-3 gap-6">
           <div>
-            <p class="font-mono font-bold text-2xl neon-text">30+</p>
+            <p class="font-mono font-bold text-2xl neon-text">10+</p>
             <p class="text-xs text-gray-400 font-sans mt-1">Project selesai</p>
           </div>
           <div>
@@ -519,13 +672,13 @@
       <div class="card p-6">
         <div class="mb-4">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <rect x="8" y="12" width="24" height="22" fill="#e0f7ff" stroke="#00f0ff" stroke-width="1.5"/>
-            <rect x="14" y="18" width="5" height="5" fill="#00f0ff" opacity="0.5"/>
-            <rect x="21" y="18" width="5" height="5" fill="#00f0ff" opacity="0.5"/>
-            <rect x="14" y="26" width="5" height="8" fill="#00f0ff" opacity="0.3"/>
-            <rect x="21" y="26" width="5" height="8" fill="#00f0ff" opacity="0.3"/>
-            <rect x="4" y="34" width="32" height="2" fill="#00f0ff" opacity="0.8"/>
-            <rect x="17" y="6" width="6" height="6" fill="#00f0ff" opacity="0.6"/>
+            <rect x="8" y="12" width="24" height="22" fill="#f5e0ff" stroke="#b300ff" stroke-width="1.5"/>
+            <rect x="14" y="18" width="5" height="5" fill="#b300ff" opacity="0.5"/>
+            <rect x="21" y="18" width="5" height="5" fill="#b300ff" opacity="0.5"/>
+            <rect x="14" y="26" width="5" height="8" fill="#b300ff" opacity="0.3"/>
+            <rect x="21" y="26" width="5" height="8" fill="#b300ff" opacity="0.3"/>
+            <rect x="4" y="34" width="32" height="2" fill="#b300ff" opacity="0.8"/>
+            <rect x="17" y="6" width="6" height="6" fill="#b300ff" opacity="0.6"/>
           </svg>
         </div>
         <h3 class="font-mono font-bold text-base text-gray-900 mb-2">Company Profile</h3>
@@ -609,8 +762,8 @@
       <div class="text-center group">
         <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-gray-50 border border-gray-100 rounded-lg transition-all duration-300 group-hover:border-cyan-300" style="transition:all 0.3s ease;">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M16 4 L20 14 L30 14 L22 20 L25 30 L16 24 L7 30 L10 20 L2 14 L12 14 Z" fill="#00f0ff" opacity="0.15" stroke="#00f0ff" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M16 8 L19 16 L27 16 L21 20 L23 28 L16 23 L9 28 L11 20 L5 16 L13 16 Z" fill="#00f0ff" opacity="0.4"/>
+            <path d="M16 4 L20 14 L30 14 L22 20 L25 30 L16 24 L7 30 L10 20 L2 14 L12 14 Z" fill="#b300ff" opacity="0.15" stroke="#b300ff" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M16 8 L19 16 L27 16 L21 20 L23 28 L16 23 L9 28 L11 20 L5 16 L13 16 Z" fill="#b300ff" opacity="0.4"/>
           </svg>
         </div>
         <h3 class="font-mono font-bold text-lg text-gray-900 mb-2">Cepat</h3>
@@ -687,16 +840,16 @@
         <div class="portfolio-thumb">
           <svg width="240" height="160" viewBox="0 0 240 160" fill="none">
             <rect width="240" height="160" fill="#0d1117"/>
-            <rect x="20" y="15" width="200" height="130" rx="3" fill="#1a1a2e" stroke="#00f0ff" stroke-width="0.8" opacity="0.8"/>
-            <rect x="20" y="15" width="200" height="20" rx="3" fill="#1a1a2e" stroke="#00f0ff" stroke-width="0.8"/>
+            <rect x="20" y="15" width="200" height="130" rx="3" fill="#1a1a2e" stroke="#b300ff" stroke-width="0.8" opacity="0.8"/>
+            <rect x="20" y="15" width="200" height="20" rx="3" fill="#1a1a2e" stroke="#b300ff" stroke-width="0.8"/>
             <circle cx="32" cy="25" r="3" fill="#ff6b6b" opacity="0.7"/>
             <circle cx="42" cy="25" r="3" fill="#ffd93d" opacity="0.7"/>
-            <circle cx="52" cy="25" r="3" fill="#00f0ff" opacity="0.5"/>
-            <rect x="28" y="43" width="120" height="6" rx="1" fill="#00f0ff" opacity="0.8"/>
+            <circle cx="52" cy="25" r="3" fill="#b300ff" opacity="0.5"/>
+            <rect x="28" y="43" width="120" height="6" rx="1" fill="#b300ff" opacity="0.8"/>
             <rect x="28" y="54" width="80" height="4" rx="1" fill="#a855f7" opacity="0.5"/>
             <rect x="28" y="63" width="60" height="4" rx="1" fill="#3b7bff" opacity="0.4"/>
-            <rect x="28" y="72" width="50" height="12" rx="2" fill="#00f0ff" opacity="0.2" stroke="#00f0ff" stroke-width="0.8"/>
-            <rect x="28" y="95" width="55" height="35" rx="2" fill="#ffffff" opacity="0.06" stroke="#00f0ff" stroke-width="0.5"/>
+            <rect x="28" y="72" width="50" height="12" rx="2" fill="#b300ff" opacity="0.2" stroke="#b300ff" stroke-width="0.8"/>
+            <rect x="28" y="95" width="55" height="35" rx="2" fill="#ffffff" opacity="0.06" stroke="#b300ff" stroke-width="0.5"/>
             <rect x="92" y="95" width="55" height="35" rx="2" fill="#ffffff" opacity="0.06" stroke="#a855f7" stroke-width="0.5"/>
             <rect x="156" y="95" width="55" height="35" rx="2" fill="#ffffff" opacity="0.06" stroke="#3b7bff" stroke-width="0.5"/>
           </svg>
@@ -717,7 +870,7 @@
 
       <!-- Project 2 -->
       <div class="card overflow-hidden">
-        <div class="portfolio-thumb" style="background:#f5f0ff;">
+        <div class="portfolio-thumb">
           <svg width="240" height="160" viewBox="0 0 240 160" fill="none">
             <rect width="240" height="160" fill="#0d0d1a"/>
             <rect x="20" y="15" width="200" height="130" rx="3" fill="#12001a" stroke="#a855f7" stroke-width="0.8" opacity="0.8"/>
@@ -749,7 +902,7 @@
 
       <!-- Project 3 -->
       <div class="card overflow-hidden">
-        <div class="portfolio-thumb" style="background:#f0f4ff;">
+        <div class="portfolio-thumb">
           <svg width="240" height="160" viewBox="0 0 240 160" fill="none">
             <rect width="240" height="160" fill="#0d1020"/>
             <rect x="20" y="15" width="200" height="130" rx="3" fill="#0d1020" stroke="#3b7bff" stroke-width="0.8" opacity="0.8"/>
@@ -1013,7 +1166,7 @@
     <!-- Bottom bar -->
     <div class="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
       <p class="font-mono text-xs text-gray-600">
-        &copy; 2025 bisabikinweb. Built with <span class="neon-text">&#10084;</span> + code.
+        &copy; 2025 bisabikinweb. Built with <span class="neon-text">&#10084;</span>
       </p>
       <p class="font-mono text-xs text-gray-700">
         <span class="term-prefix">$ </span>status: <span class="text-green-400">open for projects</span>
@@ -1026,9 +1179,60 @@
 
 
 <!-- ════════════════════════════════════════════
+     DARK MODE TOGGLE
+════════════════════════════════════════════ -->
+<button class="dark-mode-toggle" id="dark-mode-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+  <span id="theme-icon">🌙</span>
+</button>
+
+
+<!-- ════════════════════════════════════════════
      JAVASCRIPT
 ════════════════════════════════════════════ -->
 <script>
+  // ── Dark Mode Toggle ──────────────────────────
+  const darkModeBtn = document.getElementById('dark-mode-btn');
+  const themeIcon = document.getElementById('theme-icon');
+  const html = document.documentElement;
+
+  // Check for saved preference or system preference
+  function initDarkMode() {
+    const saved = localStorage.getItem('theme-preference');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = saved ? saved === 'dark' : prefersDark;
+    
+    if (isDark) {
+      html.classList.add('dark-mode');
+      themeIcon.textContent = '☀️';
+    } else {
+      html.classList.remove('dark-mode');
+      themeIcon.textContent = '🌙';
+    }
+  }
+
+  // Initialize on page load
+  initDarkMode();
+
+  // Toggle dark mode
+  darkModeBtn.addEventListener('click', () => {
+    const isDark = html.classList.toggle('dark-mode');
+    localStorage.setItem('theme-preference', isDark ? 'dark' : 'light');
+    themeIcon.textContent = isDark ? '☀️' : '🌙';
+  });
+
+  // Listen for system preference changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme-preference')) {
+      if (e.matches) {
+        html.classList.add('dark-mode');
+        themeIcon.textContent = '☀️';
+      } else {
+        html.classList.remove('dark-mode');
+        themeIcon.textContent = '🌙';
+      }
+    }
+  });
+
   // ── Typing effect ─────────────────────────────
   const phrases = [
     'website_untuk_usahamu.launch()',
@@ -1103,7 +1307,7 @@
     navLinks.forEach(a => {
       a.style.color = '';
       if (a.getAttribute('href') === '#' + current && !a.classList.contains('btn-neon')) {
-        a.style.color = '#1a1a2e';
+        a.style.color = html.classList.contains('dark-mode') ? '#e5e7eb' : '#1a1a2e';
       }
     });
   }, { passive: true });
